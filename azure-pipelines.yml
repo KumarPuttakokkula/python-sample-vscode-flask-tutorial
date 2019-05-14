@@ -1,5 +1,5 @@
 variables:
-  ConnectedServiceName: 'KumarPuttakokkula'
+  ConnectedServiceName: 'Azure Primary'
   WebAppName: 'kumar-flaskpipelines'
 
 trigger:
