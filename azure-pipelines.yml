@@ -39,6 +39,6 @@ steps:
     azureSubscription: 'Pay-As-You-Go(f1c62fd3-849e-42dd-9b0f-2fe95f6ce81e)'
     appType: 'webAppLinux'
     WebAppName: 'kumar-flaskpipelines'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
     RuntimeStack: 'PYTHON|3.6'
     StartupCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
