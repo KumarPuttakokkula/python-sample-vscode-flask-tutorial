@@ -32,16 +32,13 @@ steps:
     replaceExistingArchive: true
     verbose: # Optional
 
-- task: AzureRMWebAppDeployment@4
+- task: AzureRmWebAppDeployment@4
   displayName: Azure App Service Deploy
   inputs:
-    appType: webAppLinux
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(f1c62fd3-849e-42dd-9b0f-2fe95f6ce81e)'
+    appType: 'webAppLinux'
+    WebAppName: 'kumar-flaskpipelines'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'PYTHON|3.6'
-    ConnectedServiceName: $(ConnectedServiceName)
-    WebAppName: $(WebAppName)
-    Package: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
-
-    # The following command is specific to the python-sample-vscode-flask-tutorial code.
-    # You may or may not need a startup command for your own app.
-
     StartupCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
